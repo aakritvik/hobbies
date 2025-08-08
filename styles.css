@@ -21,23 +21,10 @@ body {
 /* Each slide */
 .slide {
   display: none;
-  text-align: center;
 }
 
 .slide.active {
   display: block;
-}
-
-/* Heading & text */
-h1 {
-  margin: 10px 0;
-  font-size: 1.6rem;
-}
-
-p {
-  margin: 5px 0 15px;
-  font-size: 1rem;
-  color: #666;
 }
 
 /* Mobile aspect ratio container */
@@ -57,6 +44,29 @@ p {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+/* Overlay text styling */
+.overlay-text {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px;
+  color: white;
+  background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0));
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.overlay-text h1 {
+  font-size: 1.5rem;
+  margin: 0 0 5px;
+}
+
+.overlay-text p {
+  font-size: 0.9rem;
+  margin: 0;
 }
 
 /* Navigation arrows */
@@ -83,4 +93,14 @@ p {
 
 .nav:hover {
   background: rgba(0,0,0,0.6);
+}
+
+/* Responsive text adjustments */
+@media (max-width: 768px) {
+  .overlay-text h1 {
+    font-size: 1.2rem;
+  }
+  .overlay-text p {
+    font-size: 0.8rem;
+  }
 }
