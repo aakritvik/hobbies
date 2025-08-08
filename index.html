@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>My Hobbies</title>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+  *{box-sizing:border-box}
+  html,body{height:100%;margin:0;font-family:'Poppins',sans-serif;background:#000;color:#fff}
+  .swiper{height:100vh}
+  .swiper-slide{
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+  }
+  .bg-img{
+    position:absolute;inset:0;width:100%;height:100%;
+    object-fit:cover;
+  }
+  .overlay{
+    position:absolute;inset:0;
+    z-index:2;
+    mix-blend-mode:overlay;
+    opacity:0.8;
+  }
+  .content{
+    position:relative;z-index:3;text-align:center;padding:20px;
+    backdrop-filter:blur(2px);
+  }
+  .title{
+    font-size:2.5rem;font-weight:700;text-shadow:0 0 10px rgba(0,0,0,0.7);
+  }
+  .one-liner{
+    font-size:1.2rem;margin-top:10px;text-shadow:0 0 5px rgba(0,0,0,0.5);
+  }
+  .swiper-pagination-bullets { bottom: 20px !important; }
+  .swiper-button-next, .swiper-button-prev {
+    color:white;z-index:5;
+    background:rgba(0,0,0,0.3);
+    border-radius:50%;
+    padding:20px;
+  }
+</style>
+</head>
+<body>
+
+<div class="swiper">
+  <div class="swiper-wrapper" id="slidesHere"></div>
+
+  <div class="swiper-button-next"></div>
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-pagination"></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+<script>
+const hobbies = [
+  { title: "Track Racing", oneLiner: "Speed, precision, and adrenaline on the circuit, teaches me to focus on whats important", img: "images/trackracing.jpg", color: "linear-gradient(135deg, rgba(255,96,98,0.6), rgba(255,168,73,0.5))" },
+  { title: "Travelling & Photography", oneLiner: "Keeps the mind fresh and shows the world a new perspective", img: "images/photography.jpg", color: "linear-gradient(135deg, rgba(95,93,255,0.6), rgba(89,228,154,0.45))" },
+  { title: "Music", oneLiner: "Expressing creativity through rhythm and melody.", img: "images/music.jpg", color: "linear-gradient(135deg, rgba(255,111,255,0.5), rgba(111,194,255,0.45))" },
+  { title: "Gym", oneLiner: "Discipline over motivation, showing up even on the bad days", img: "images/gym.jpg", color: "linear-gradient(135deg, rgba(255,193,7,0.5), rgba(255,87,34,0.5))" }
+];
+
+const container = document.getElementById('slidesHere');
+hobbies.forEach(h => {
+  const slide = document.createElement('div');
+  slide.className = 'swiper-slide';
+  slide.innerHTML = `
+    <img class="bg-img" src="${h.img}" alt="${h.title}">
+    <div class="overlay" style="background:${h.color}"></div>
+    <div class="content">
+      <div class="title">${h.title}</div>
+      <div class="one-liner">${h.oneLiner}</div>
+    </div>
+  `;
+  container.appendChild(slide);
+});
+
+const swiper = new Swiper('.swiper', {
+  direction: 'horizontal',
+  loop: false,
+  pagination: { el: '.swiper-pagination', clickable: true },
+  navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+});
+</script>
+
+</body>
+</html>
